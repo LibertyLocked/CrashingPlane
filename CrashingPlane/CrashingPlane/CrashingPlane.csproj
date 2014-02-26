@@ -59,7 +59,8 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <PlatformTarget>x86</PlatformTarget>
     <XnaCompressContent>true</XnaCompressContent>
-    <DocumentationFile>..\..\ReleaseBuild\CrashingPlane.XML</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
