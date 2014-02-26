@@ -21,6 +21,7 @@ namespace CrashingPlane
         SpriteBatch spriteBatch;
         SpriteFont mainFont, debugFont;
         RenderTarget2D renderTarget;
+        KeyboardState lastKbs, kbs;
 
         public World world;
 
@@ -117,6 +118,12 @@ namespace CrashingPlane
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            // Fullscreen toggles
+            lastKbs = kbs;
+            kbs = Keyboard.GetState();
+            if (kbs.IsKeyUp(Keys.F10) && lastKbs.IsKeyDown(Keys.F10))
+                graphics.ToggleFullScreen();
+
             switch (GlobalHelper.CurrentGameState)
             {
                 case GameState.Loading:

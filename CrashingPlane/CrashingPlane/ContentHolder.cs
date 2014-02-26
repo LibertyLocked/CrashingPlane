@@ -46,7 +46,7 @@ namespace CrashingPlane
             if (!Loaded)
             {
                 StatusText = " WAITING FOR THREAD ";
-                System.Threading.Thread.Sleep(1000);    // Just to admire the cool loading screen
+                System.Threading.Thread.Sleep(2000);    // Just to admire the cool loading screen
 
                 StatusText = " LOADING SOUNDS ";
 

@@ -14,7 +14,7 @@ namespace CrashingPlane.Mapping
         int currentIndex;
         Vector2 position;
         float speedX;
-		bool isScrolling;
+        bool isScrolling;
 
         /// <summary>
         /// Constructor.
@@ -26,7 +26,7 @@ namespace CrashingPlane.Mapping
             this.textures = textures;
             this.speedX = speedX;
             currentIndex = 0;
-			isScrolling = true;
+            isScrolling = true;
             if (top)
             {
                 // Textures shall fit screen top. (eg clouds)
@@ -41,15 +41,15 @@ namespace CrashingPlane.Mapping
 
         public void Update(GameTime gameTime)
         {
-			if (isScrolling)
-			{
-				position.X += speedX * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (isScrolling)
+            {
+                position.X += speedX * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (Math.Abs(position.X) >= textures[currentIndex].Width)
                 {
                     position.X = position.X % textures[currentIndex].Width;
                     currentIndex = (currentIndex + 1) % textures.Length;
                 }
-			}
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -66,15 +66,15 @@ namespace CrashingPlane.Mapping
             spriteBatch.Draw(textures[(currentIndex + 1) % textures.Length],
                 new Vector2(position.X + textures[currentIndex].Width, position.Y), Color.FromNonPremultiplied(255, 255, 255, (int)(255 * alphaFrac)));
         }
-		
-		public void Start()
-		{
-			isScrolling = true;
-		}
-		
-		public void Stop()
-		{
-			isScrolling = false;
-		}
+
+        public void Start()
+        {
+            isScrolling = true;
+        }
+
+        public void Stop()
+        {
+            isScrolling = false;
+        }
     }
 }

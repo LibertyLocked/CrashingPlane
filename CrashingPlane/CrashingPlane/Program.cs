@@ -14,7 +14,7 @@ namespace CrashingPlane
 #if DEBUG
             GlobalHelper.DebugMode = true;
 #else
-            if (args.Length >= 1 && args[0] == "debug"")
+            if (args.Length >= 1 && args[0] == "debug")
                 GlobalHelper.DebugMode = true;
 #endif
 
