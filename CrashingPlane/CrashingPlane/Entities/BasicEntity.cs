@@ -10,16 +10,20 @@ namespace CrashingPlane.Entities
 {
     abstract class BasicEntity
     {
-        Texture2D entityTexture;
-        Vector2 position, velocity;
+        protected Texture2D entityTexture;
+        protected Point collisionSize;
+        protected Vector2 position, velocity;
         protected bool isAlive = true;
 
+        /// <summary>
+        /// The bounding rectangle of this entity.
+        /// </summary>
         public Rectangle BoundingRectangle
         {
             get
             {
-                return new Rectangle((int)(position.X - entityTexture.Width / 2.0), (int)(position.Y - entityTexture.Height / 2.0),
-                entityTexture.Width, entityTexture.Height);
+                return new Rectangle((int)(position.X - collisionSize.X / 2.0), (int)(position.Y - collisionSize.Y / 2.0),
+                collisionSize.X, collisionSize.Y);
             }
         }
 
@@ -31,9 +35,13 @@ namespace CrashingPlane.Entities
             get { return isAlive; }
         }
 
-        public BasicEntity(Texture2D texture)
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public BasicEntity(Texture2D texture, Point collisionSize)
         {
             this.entityTexture = texture;
+            this.collisionSize = collisionSize;
         }
 
         public virtual void Update(GameTime gameTime)
@@ -48,15 +56,23 @@ namespace CrashingPlane.Entities
                 1f, SpriteEffects.None, 1f);
         }
 
+        /// <summary>
+        /// Triggered when a collision occurs between this entity and player.
+        /// </summary>
         public virtual void Trigger(Chopper player)
         {
-            if (!player.IsAlive)
-                this.SetDead();
+            //if (!player.IsAlive)
+            //    this.SetDead();
         }
 
         public virtual void SetDead()
         {
             isAlive = false;
+        }
+        
+        protected void SetVelocity(Vector2 velocity)
+        {
+            this.velocity = velocity;
         }
     }
 }
