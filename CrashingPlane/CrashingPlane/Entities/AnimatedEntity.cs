@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +9,7 @@ namespace CrashingPlane.Entities
 {
     abstract class AnimatedEntity : BasicEntity
     {
-        Point sheetSize, frameSize, collisionSize;
+        Point sheetSize, frameSize;
         int msPerFrame;
 
         int timeSinceLastFrame = 0;
@@ -23,12 +23,14 @@ namespace CrashingPlane.Entities
             get { return (currPoint.Y == 1 && currPoint.X >= sheetSize.X - 1); }
         }
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         public AnimatedEntity(Texture2D texture, Point sheetSize, Point frameSize, Point collisionSize, int msPerFrame)
-            : base(texture)
+            : base(texture, collisionSize)
         {
             this.sheetSize = sheetSize;
             this.frameSize = frameSize;
-            this.collisionSize = collisionSize;
             this.msPerFrame = msPerFrame;
         }
 
@@ -52,11 +54,14 @@ namespace CrashingPlane.Entities
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            
+            spriteBatch.Draw(texture, new Vector2(position.X - frameSize.X / 2.0, position.Y - frameSize.Y / 2.0),
+                new Rectangle(currPoint.X * frameSize.X, currPoint.Y * frameSize.Y, frameSize.X, frameSize.Y),
+                Color.White);
         }
 
         public override void SetDead()
         {
+            // Assuming the second row in the spritesheet is death animation.
             currPoint = new Point(0, 1);
             base.SetDead();
         }
