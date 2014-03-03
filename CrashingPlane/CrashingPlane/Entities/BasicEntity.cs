@@ -57,7 +57,7 @@ namespace CrashingPlane.Entities
         }
 
         /// <summary>
-        /// Triggered when a collision occurs between this entity and player.
+        /// Called by world when a collision occurs.
         /// </summary>
         public virtual void Trigger(Chopper player)
         {
