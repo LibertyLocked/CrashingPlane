@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace CrashingPlane.Entities
 {
-    abstract class BasicEntity
+    public abstract class BasicEntity
     {
         protected Texture2D entityTexture;
         protected Point collisionSize;

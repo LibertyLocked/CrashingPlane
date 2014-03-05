@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CrashingPlane.Entities
 {
-    abstract class AnimatedEntity : BasicEntity
+    public abstract class AnimatedEntity : BasicEntity
     {
         Point sheetSize, frameSize;
         int msPerFrame;
@@ -54,7 +54,7 @@ namespace CrashingPlane.Entities
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, new Vector2(position.X - frameSize.X / 2.0, position.Y - frameSize.Y / 2.0),
+            spriteBatch.Draw(entityTexture, new Vector2(position.X - (float)frameSize.X / 2, position.Y - (float)frameSize.Y / 2),
                 new Rectangle(currPoint.X * frameSize.X, currPoint.Y * frameSize.Y, frameSize.X, frameSize.Y),
                 Color.White);
         }

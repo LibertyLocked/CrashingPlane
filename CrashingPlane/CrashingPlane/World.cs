@@ -92,9 +92,22 @@ namespace CrashingPlane
             if (Player != null) // update even when player is dead because it needs to play animation
                 Player.Update(gameTime);
 
-            // Collision detections when player is alive
             if (Player != null && Player.IsAlive)
+            {
+                // Collision detections when player is alive
                 CollisionDetections();
+
+                foreach (Bird b in birds)
+                    b.Update(gameTime);
+
+                for (int i = 0; i < birds.Count; i++)
+                    if (birds[i].DeathAnimationPlayed)
+                    {
+                        birds.RemoveAt(i);
+                        i--;
+                        if (birds.Count == 0) break;
+                    }
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -118,6 +131,10 @@ namespace CrashingPlane
             // draw player chopper
             if (Player != null)
                 Player.Draw(spriteBatch);
+
+            // draw birds
+            foreach (Bird b in birds)
+                b.Draw(spriteBatch);
 
             // apply brightness last (using a black rectangle)
             spriteBatch.Draw(blank, new Rectangle(0, 0, GlobalHelper.GameWidth, GlobalHelper.GameHeight), 

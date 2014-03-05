@@ -29,14 +29,14 @@ namespace CrashingPlane.Entities
         public override void Update(GameTime gameTime)
         {
             totalSeconds += gameTime.ElapsedGameTime.TotalSeconds;
-            velocity = GetVelocity(totalSeconds)
+            velocity = GetVelocity(totalSeconds);
             base.Update(gameTime);
         }
         
         /// <summary>
         /// Gets the velocity based on time.
         /// </summary>
-        private Vector2 GetVelocity(float totalSeconds)
+        private Vector2 GetVelocity(double totalSeconds)
         {
             float vX, vY;
             // vX is wavelength/period (wave velocity)
