@@ -13,9 +13,9 @@ namespace CrashingPlane
         /// </summary>
         /// <param name="vector"></param>
         /// <returns></returns>
-        public static float ToDegree(this Vector2 vector)
+        public static float ToDegrees(this Vector2 vector)
         {
-            float radians = (float)Math.Atan2(vector.X, -vector.Y);
+            float radians = ToRadians(vector);
             return MathHelper.ToDegrees(radians);
         }
 
