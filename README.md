@@ -7,6 +7,6 @@ key features:
 
 Async content loading
 
-Day light rotations
+Day night rotations effect
 
 Background scrolling on different layers
