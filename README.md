@@ -3,10 +3,13 @@ CrashingPlane
 
 Experimental XNA game for Xbox 360 and Windows.
 
-key features:
+##Key Features
 
-Async content loading
+- Async content loading
 
-Day night rotations effect
+- Day night rotations effect
 
-Background scrolling on different layers
+- Background scrolling on different layers
+
+## Video Showcase
+https://www.youtube.com/watch?v=q7fOgzvCzWM
